@@ -1,7 +1,6 @@
 // secret client_id
-// require('dotenv').config()
-let client_id = "spWtFQ8sNrBp4gLHZ48_rRSxlXdHx5uiF7AQsU8Eixg"
-// let key = process.env.CLIENT_ID
+require('dotenv').config()
+let key = process.env.CLIENT_ID
 
 // search term 
 let searchTerm = document.querySelector("#search-term")  
@@ -11,7 +10,7 @@ let page = 1
 
 // fetch photos 
 let getData = (query) => {
-    fetch(`https://api.unsplash.com/search/photos?client_id=${client_id}&query=${query}&page=${page}`)
+    fetch(`https://api.unsplash.com/search/photos?client_id=${key}&query=${query}&page=${page}`)
     .then(r => r.json())
     .then(imageArray => {
     //    let max = imageArray.total_pages 
@@ -96,13 +95,3 @@ searchBar.addEventListener("submit", (event) => {
     prevFunctionality(query)
     nextFunctionality(query)
 })
-
-
-
-
-
-        
-
-    
-
-
