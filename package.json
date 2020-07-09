@@ -5,11 +5,16 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "jw-paginate": "^1.0.4"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
   }
 }

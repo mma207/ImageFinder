@@ -1,5 +1,7 @@
-// make secret later 
+// secret client_id
+// require('dotenv').config()
 let client_id = "spWtFQ8sNrBp4gLHZ48_rRSxlXdHx5uiF7AQsU8Eixg"
+// let key = process.env.CLIENT_ID
 
 // search term 
 let searchTerm = document.querySelector("#search-term")  
@@ -39,7 +41,6 @@ let prevFunctionality = (query) => {
         page > 1 ? page -= 1 : page = 1 
         imageCollection.innerHTML = ""
         getData(query)
-        console.log(page, query, client_id)
     })
 }
 
@@ -49,7 +50,6 @@ let nextFunctionality = (query) => {
         page += 1 
         imageCollection.innerHTML = ""
         getData(query)
-        console.log(page, query, client_id)
     })
 }
 
