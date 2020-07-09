@@ -4,15 +4,21 @@
     <meta charset="utf-8">
     <title>Image Finder 📷</title>
     <script defer type="text/javascript" src="src/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
   <body>
-    <h1>Image Finder</h1>
-    <div id="search-bar">
+    <div class="search-bar">
+        <h1>Welcome to Image Finder</h1>
+        <h4>Click on the icon to start your search</h4>
         <form id="search">
             <input id="query" type="text" placeholder="Search Images" value="">
-            <button>Search</button>
+            <!-- <button>Search</button> -->
         </form>
     </div>
-    <div id="collection"></div>
+    <div class="collection"></div>
+    <div class="modal-background">
+        <div class="modal">
+        </div>
+    </div>
   </body>
 </html>
