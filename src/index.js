@@ -2,14 +2,14 @@
 let client_id = "spWtFQ8sNrBp4gLHZ48_rRSxlXdHx5uiF7AQsU8Eixg"
 
 // search term 
-let query = document.querySelector("#query") 
+let searchTerm = document.querySelector("#search-term")  
 
 // page 
 let page = 1 
 
 // fetch photos 
-let getData = () => {
-    fetch(`https://api.unsplash.com/search/photos?client_id=${client_id}&query=${query.value}&page=${page}`)
+let getData = (query) => {
+    fetch(`https://api.unsplash.com/search/photos?client_id=${client_id}&query=${query}&page=${page}`)
     .then(r => r.json())
     .then(imageArray => {
     //    let max = imageArray.total_pages 
@@ -18,11 +18,11 @@ let getData = () => {
             let imageIcon = document.createElement("img")
             imageIcon.className = "display"
             imageIcon.src = image.urls.thumb
-            imageDisplay.append(imageIcon)
+            imageCollection.append(imageIcon)
     
             modalFunctionality(imageIcon, image)
         });
-        imageDisplay.append(prev, next)
+        imageCollection.append(prev, next)
     })
 }
 
@@ -34,24 +34,24 @@ let next = document.createElement("button")
 next.className = "btn"
 next.innerHTML = "Next Page"
 
-let prevFunctionality = () => {
+let prevFunctionality = (query) => {
     prev.addEventListener("click", () => {
         page > 1 ? page -= 1 : page = 1 
-        getData()
-        console.log(page)
+        imageCollection.innerHTML = ""
+        getData(query)
+        console.log(page, query, client_id)
     })
 }
-prevFunctionality()
 
-let nextFunctionality = () => {
+let nextFunctionality = (query) => {
     next.addEventListener("click", () => {
         // page < max ? page += 1 : page = max 
         page += 1 
-        getData()
-        console.log(page)
+        imageCollection.innerHTML = ""
+        getData(query)
+        console.log(page, query, client_id)
     })
 }
-nextFunctionality()
 
 // modal 
 let modalBG = document.querySelector(".modal-background")
@@ -78,19 +78,23 @@ let modalFunctionality = (imageIcon, image) => {
 }
 
 // search image api
-let welcome = document.querySelector(".search-bar")
-let searchBar = document.querySelector("#search")
-let imageDisplay = document.querySelector(".collection")
+let welcome = document.querySelector(".welcome")
+let searchBar = document.querySelector("#search-bar")
+let imageCollection = document.querySelector(".collection")
 let body = document.querySelector("body")
 
 searchBar.addEventListener("submit", (event) => {
     event.preventDefault()
+    let query = searchTerm.value 
 
     welcome.innerHTML = ""
     body.style.background = "gray"
 
-    getData()
+    getData(query)
     event.target.reset() 
+
+    prevFunctionality(query)
+    nextFunctionality(query)
 })
 
 

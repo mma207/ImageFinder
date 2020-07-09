@@ -7,12 +7,12 @@ html body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.search-bar{
+.welcome{
     padding-top: 200px;
     text-align: center;
 }
 
-#query{
+#search-term{
     width: 24px;
     padding: 0 10px;
     height: 24px;
@@ -24,12 +24,12 @@ html body{
     transition: .3s ease;
 }
 
-#query:focus {
+#search-term:focus {
     outline: none;
     width: 180px;
 }
 
-#search{
+#search-bar{
     position: relative;
     padding: 5px;
     border-radius: 100px;
@@ -37,11 +37,11 @@ html body{
     display: inline-block;
 }
 
-#search:hover{
+#search-bar:hover{
     opacity: 0.7;
 }
 
-#search:after{
+#search-bar:after{
     content: '';
     display: block;
     position: absolute;
